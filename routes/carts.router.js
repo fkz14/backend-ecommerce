@@ -1,32 +1,41 @@
-const express = require('express'); // Importa el módulo Express para crear rutas.
-const router = express.Router(); // Crea un nuevo router de Express para definir rutas específicas.
-const CartManager = require('../managers/CartManager'); // Importa la clase CartManager para manejar carritos.
+const express = require('express');
+const router = express.Router();
+const CartManager = require('../managers/CartManager');
 
-const cm = new CartManager(); // Instancia CartManager para usar sus métodos en las rutas.
+const cm = new CartManager();
 
-// POST /api/carts - crear un carrito vacío
-router.post('/', (req, res) => { // Define la ruta POST para crear un carrito vacío.
-  const newCart = cm.createCart(); // Llama al método createCart() para crear un nuevo carrito.
-  res.status(201).json(newCart); // Devuelve el carrito creado con status 201 (creado).
+router.post('/', (req, res) => {
+  try {
+    const newCart = cm.createCart();
+    if (!newCart) return res.status(500).json({ error: 'No se pudo crear el carrito' });
+    res.status(201).json(newCart);
+  } catch (error) {
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
 });
 
-// GET /api/carts/:cid - obtener carrito por ID
-router.get('/:cid', (req, res) => { // Define la ruta GET para obtener un carrito por su ID.
-  const cart = cm.getCartById(req.params.cid); // Busca el carrito usando el ID recibido por parámetro.
-  cart
-    ? res.json(cart) // Si existe, responde con el carrito en JSON.
-    : res.status(404).json({ error: 'Carrito no encontrado' }); // Si no existe, responde con error 404.
+router.get('/:cid', (req, res) => {
+  try {
+    const cart = cm.getCartById(req.params.cid);
+    cart
+      ? res.json(cart)
+      : res.status(404).json({ error: 'Carrito no encontrado' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
 });
 
-// POST /api/carts/:cid/product/:pid - agregar producto al carrito
-router.post('/:cid/product/:pid', (req, res) => { // Define la ruta POST para agregar un producto a un carrito.
-  const cid = req.params.cid; // Obtiene el ID del carrito desde los parámetros de la URL.
-  const pid = req.params.pid; // Obtiene el ID del producto desde los parámetros de la URL.
-
-  const updatedCart = cm.addProductToCart(cid, pid); // Llama al método para agregar el producto al carrito.
-  updatedCart
-    ? res.json(updatedCart) // Si lo encuentra y actualiza, responde con el carrito actualizado.
-    : res.status(404).json({ error: 'Carrito no encontrado' }); // Si no existe el carrito, responde con error 404.
+router.post('/:cid/product/:pid', (req, res) => {
+  try {
+    const cid = req.params.cid;
+    const pid = req.params.pid;
+    const updatedCart = cm.addProductToCart(cid, pid);
+    updatedCart
+      ? res.json(updatedCart)
+      : res.status(404).json({ error: 'Carrito no encontrado' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
 });
 
-module.exports = router; // Exporta el router para usarlo en la aplicación principal.
+module.exports = router;
