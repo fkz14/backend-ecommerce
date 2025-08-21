@@ -1,5 +1,8 @@
+{{! Comentario: Esta vista muestra los productos en tiempo real }}
+
 <h1>Productos en Tiempo Real</h1>
 
+<!-- Formulario para agregar un producto nuevo -->
 <form id="addProductForm">
   <input type="text" name="title" placeholder="Título" required>
   <input type="text" name="description" placeholder="Descripción" required>
@@ -10,13 +13,16 @@
   <button type="submit">Agregar Producto</button>
 </form>
 
+<!-- Lista donde se mostrarán los productos -->
 <ul id="productsList"></ul>
 
+<!-- Script para conectar con Socket.io -->
 <script src="/socket.io/socket.io.js"></script>
 <script>
+  // Conecta con el servidor usando Socket.io
   const socket = io();
 
-  // Renderizar productos
+  // Recibe la lista de productos y la muestra en la página
   socket.on('products', products => {
     const list = document.getElementById('productsList');
     list.innerHTML = '';
@@ -28,7 +34,7 @@
     });
   });
 
-  // Agregar producto
+  // Envía los datos del formulario para agregar un producto
   document.getElementById('addProductForm').addEventListener('submit', e => {
     e.preventDefault();
     const form = e.target;
@@ -46,7 +52,7 @@
     form.reset();
   });
 
-  // Eliminar producto
+  // Envía el evento para eliminar un producto
   function deleteProduct(id) {
     socket.emit('deleteProduct', id);
   }

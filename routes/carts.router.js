@@ -1,9 +1,11 @@
+// Importa Express y crea el router
 const express = require('express');
 const router = express.Router();
+// Importa el manager de carritos
 const CartManager = require('../managers/CartManager');
-
 const cm = new CartManager();
 
+// Ruta para crear un carrito nuevo
 router.post('/', (req, res) => {
   try {
     const newCart = cm.createCart();
@@ -14,6 +16,7 @@ router.post('/', (req, res) => {
   }
 });
 
+// Ruta para obtener los productos de un carrito
 router.get('/:cid', (req, res) => {
   try {
     const cart = cm.getCartById(req.params.cid);
@@ -25,6 +28,7 @@ router.get('/:cid', (req, res) => {
   }
 });
 
+// Ruta para agregar un producto a un carrito
 router.post('/:cid/product/:pid', (req, res) => {
   try {
     const cid = req.params.cid;
@@ -38,4 +42,5 @@ router.post('/:cid/product/:pid', (req, res) => {
   }
 });
 
+// Exporta el router para usarlo en app.js
 module.exports = router;

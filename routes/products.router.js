@@ -1,9 +1,11 @@
+// Importa Express y crea el router
 const express = require('express');
 const router = express.Router();
+// Importa el manager de productos
 const ProductManager = require('../managers/ProductManager');
-
 const pm = new ProductManager();
 
+// Ruta para obtener todos los productos
 router.get('/', (req, res) => {
   try {
     const products = pm.getAll();
@@ -13,6 +15,7 @@ router.get('/', (req, res) => {
   }
 });
 
+// Ruta para obtener un producto por su ID
 router.get('/:pid', (req, res) => {
   try {
     const product = pm.getById(req.params.pid);
@@ -24,6 +27,7 @@ router.get('/:pid', (req, res) => {
   }
 });
 
+// Ruta para crear un producto nuevo
 router.post('/', (req, res) => {
   try {
     const { title, description, code, price, status, stock, category, thumbnails } = req.body;
@@ -47,6 +51,7 @@ router.post('/', (req, res) => {
   }
 });
 
+// Ruta para actualizar un producto existente
 router.put('/:pid', (req, res) => {
   try {
     const updated = pm.updateProduct(req.params.pid, req.body);
@@ -58,6 +63,7 @@ router.put('/:pid', (req, res) => {
   }
 });
 
+// Ruta para eliminar un producto por su ID
 router.delete('/:pid', (req, res) => {
   try {
     const exists = pm.getById(req.params.pid);
@@ -69,4 +75,5 @@ router.delete('/:pid', (req, res) => {
   }
 });
 
+// Exporta el router para usarlo en app.js
 module.exports = router;
