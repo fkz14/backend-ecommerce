@@ -1,44 +1,205 @@
+/* Estilo general del body */
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 20px;
+  font-family: 'Segoe UI', Arial, sans-serif; /* Fuente principal */
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); /* Fondo degradado */
+  margin: 0;  /* Sin margen por defecto */
+  padding: 0; /* Sin padding por defecto */
 }
 
-h1 {
-  color: #333;
+/* Contenedor principal */
+.container {
+  max-width: 900px; /* Ancho máximo */
+  margin: 40px auto; /* Centrado horizontal y margen superior e inferior */
+  background: #fff; /* Fondo blanco */
+  border-radius: 16px; /* Bordes redondeados */
+  box-shadow: 0 8px 32px rgba(60, 72, 88, 0.15); /* Sombra suave */
+  padding: 32px 40px; /* Espaciado interno */
 }
 
+/* Estilo para títulos h1 y h2 */
+h1, h2 {
+  color: #3b82f6; /* Azul */
+  margin-bottom: 16px; /* Espacio inferior */
+  text-align: center; /* Centrado de texto */
+  letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Formulario */
 form {
-  margin-bottom: 20px;
+  margin-bottom: 24px; /* Espacio inferior */
+  display: flex; /* Flexbox */
+  flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
+  gap: 12px; /* Espacio entre elementos */
+  align-items: center; /* Centrado vertical de elementos */
+  justify-content: center; /* Centrado horizontal */
 }
 
+/* Inputs y botones */
 input, button {
-  margin: 5px;
-  padding: 8px;
+  margin: 0; /* Sin margen */
+  padding: 10px 14px; /* Espaciado interno */
+  border-radius: 6px; /* Bordes redondeados */
+  border: 1px solid #d1d5db; /* Borde gris claro */
+  font-size: 1rem; /* Tamaño de fuente */
+  transition: border-color 0.2s; /* Transición suave para borde */
 }
 
+/* Efecto al enfocar un input */
+input:focus {
+  border-color: #3b82f6; /* Cambia borde a azul */
+  outline: none; /* Sin outline por defecto */
+}
+
+/* Botones */
+button {
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%); /* Degradado azul */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cursor puntero */
+  font-weight: 600; /* Negrita */
+  box-shadow: 0 2px 8px rgba(60, 72, 88, 0.08); /* Sombra suave */
+  transition: background 0.2s, transform 0.2s; /* Transición para hover */
+}
+
+/* Hover en botones */
+button:hover {
+  background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%); /* Invertido degradado */
+  transform: translateY(-2px) scale(1.05); /* Pequeña animación */
+}
+
+/* Listas sin estilo de viñetas */
 ul {
   list-style: none;
   padding: 0;
 }
 
+/* Elementos de lista */
 li {
-  background: #fff;
-  margin-bottom: 8px;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: #f1f5f9; /* Fondo gris claro */
+  margin-bottom: 12px; /* Espacio inferior */
+  padding: 18px 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 1px 4px rgba(60, 72, 88, 0.07); /* Sombra muy ligera */
+  display: flex; /* Flexbox */
+  align-items: center; /* Centrado vertical */
+  justify-content: space-between; /* Separación de contenido */
+  transition: box-shadow 0.2s; /* Transición para sombra */
 }
 
-button {
-  background: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+/* Hover en elementos de lista */
+li:hover {
+  box-shadow: 0 4px 16px rgba(60, 72, 88, 0.12); /* Sombra más intensa */
+  background: #e0e7ff; /* Fondo azul claro */
 }
 
-button:hover {
-  background: #c0392b;
+/* Botones dentro de acciones de producto */
+.product-actions button {
+  margin-left: 8px; /* Separación entre botones */
+}
+
+/* Contenedor de detalle de producto */
+#detailProduct {
+  background: #fff; /* Fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 24px rgba(60, 72, 88, 0.18); /* Sombra más fuerte */
+  padding: 24px; /* Espaciado interno */
+  margin-bottom: 24px; /* Margen inferior */
+  max-width: 400px; /* Ancho máximo */
+  margin-left: auto;
+  margin-right: auto; /* Centrado horizontal */
+  animation: fadeIn 0.4s; /* Animación de aparición */
+}
+
+/* Animación fadeIn */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+/* Paginación */
+#pagination {
+  text-align: center;
+  margin: 18px 0;
+}
+
+/* Contenedores de productos */
+.products-list, .products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Espacio entre productos */
+  margin-bottom: 24px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: #f1f5f9; /* Fondo gris claro */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 2px 12px rgba(60, 72, 88, 0.10); /* Sombra ligera */
+  padding: 22px 18px; /* Espaciado interno */
+  display: flex; /* Flexbox */
+  flex-direction: row; /* Elementos en fila */
+  align-items: center; /* Centrado vertical */
+  justify-content: space-between; /* Separación horizontal */
+  transition: box-shadow 0.2s; /* Transición para sombra */
+  position: relative; /* Posicionamiento relativo */
+}
+
+/* Hover en tarjeta de producto */
+.product-card:hover {
+  box-shadow: 0 6px 24px rgba(60, 72, 88, 0.18); /* Sombra más grande */
+  background: #e0e7ff; /* Fondo azul claro */
+}
+
+/* Título del producto */
+.product-title {
+  font-size: 1.2rem; /* Tamaño de fuente */
+  font-weight: 600; /* Negrita */
+  color: #3b82f6; /* Azul */
+  margin-bottom: 8px; /* Espacio inferior */
+}
+
+/* Contenedor de información */
+.product-info {
+  display: flex;
+  gap: 12px; /* Separación entre info */
+  align-items: center; /* Centrado vertical */
+  margin-bottom: 8px; /* Espacio inferior */
+}
+
+/* Cajas de precio y stock */
+.price-box, .stock-box {
+  background: #6366f1; /* Fondo azul */
+  color: #fff; /* Texto blanco */
+  border-radius: 6px; /* Bordes redondeados */
+  padding: 6px 14px; /* Espaciado interno */
+  font-weight: 500; /* Semi-negrita */
+  font-size: 1rem; /* Tamaño de fuente */
+  box-shadow: 0 1px 4px rgba(60, 72, 88, 0.10); /* Sombra ligera */
+}
+
+/* Descripción del producto */
+.product-description {
+  margin-bottom: 8px; /* Espacio inferior */
+  color: #555; /* Gris oscuro */
+  font-size: 0.98rem; /* Tamaño de fuente ligeramente menor */
+  max-width: 320px; /* Ancho máximo */
+}
+
+/* Total del carrito */
+.cart-total {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6366f1;
+  text-align: right; /* Alineado a la derecha */
+}
+
+/* Estilo de scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e0e7ff; /* Fondo del scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background: #6366f1; /* Color del pulgar del scrollbar */
+  border-radius: 8px; /* Bordes redondeados */
 }

@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>🛒 NexaTech</h1>
+  <input type="hidden" id="cartId" value="{{cartId}}">
+
+  <button id="showAddForm">Agregar Producto</button>
+
+  <!-- Formulario agregar producto -->
+  <form id="addProductForm" style="display:none;">
+    <input type="text" name="title" placeholder="Título" required>
+    <input type="text" name="description" placeholder="Descripción" required>
+    <input type="text" name="code" placeholder="Código unico" required>
+    <input type="number" name="price" placeholder="Precio" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="text" name="category" placeholder="Categoría" required>
+    <button type="submit">Agregar</button>
+    <button type="button" onclick="addProductForm.style.display='none'">Cancelar</button>
+  </form>
+
+  <!-- Formulario editar producto -->
+  <form id="editProductForm" style="display:none;">
+    <input type="hidden" name="productId">
+    <input type="text" name="title" placeholder="Título" required>
+    <input type="text" name="description" placeholder="Descripción" required>
+    <input type="text" name="code" placeholder="Código" required>
+    <input type="number" name="price" placeholder="Precio" required>
+    <input type="number" name="stock" placeholder="Stock" required>
+    <input type="text" name="category" placeholder="Categoría" required>
+    <button type="submit">Actualizar</button>
+    <button type="button" onclick="editProductForm.style.display='none'">Cancelar</button>
+  </form>
+
+  <!-- Detalle producto -->
+  <div id="detailProduct" style="display:none;"></div>
+
+  <h2>Productos disponibles</h2>
+  <div id="productsList" class="products-list"></div>
+  <div id="pagination"></div>
+
+  <h2>Tu carrito</h2>
+  <ul id="cartList"></ul>
+  <div id="cartTotal" class="cart-total"></div>
+  <button id="emptyCartBtn">Vaciar carrito</button>
+</div>
+
+<script src="/main.js"></script>

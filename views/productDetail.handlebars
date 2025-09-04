@@ -1,0 +1,10 @@
+<h1>{{product.title}}</h1>
+<p>{{product.description}}</p>
+<p>Precio: ${{product.price}}</p>
+<p>Categoría: {{product.category}}</p>
+<p>Stock: {{product.stock}}</p>
+<form action="/api/carts/{{cartId}}/product/{{product._id}}" method="POST">
+ <!-- Formulario para agregar el producto al carrito. 
+       La URL usa el ID del carrito y el ID del producto para la ruta del backend -->
+  <button type="submit">Agregar al carrito</button>
+</form>

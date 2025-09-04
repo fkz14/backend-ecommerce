@@ -1,0 +1,29 @@
+<h1>Carrito</h1>
+<!-- Título principal de la página -->
+
+<ul>
+  {{#each cart.products}}
+  <!-- Itera sobre cada producto dentro del carrito -->
+    <li>
+      <strong>{{this.product.title}}</strong> - Cantidad: {{this.quantity}}
+      <!-- Muestra el título del producto y la cantidad en el carrito -->
+
+      <form action="/api/carts/{{../cart._id}}/products/{{this.product._id}}?_method=PUT" method="POST">
+        <!-- Formulario para actualizar la cantidad del producto usando PUT (override con _method) -->
+        <input type="number" name="quantity" value="{{this.quantity}}" min="1">
+        <!-- Input para modificar la cantidad, con valor mínimo de 1 -->
+        <button type="submit">Actualizar cantidad</button>
+      </form>
+
+      <form action="/api/carts/{{../cart._id}}/products/{{this.product._id}}?_method=DELETE" method="POST">
+        <!-- Formulario para eliminar el producto del carrito usando DELETE -->
+        <button type="submit">Eliminar</button>
+      </form>
+    </li>
+  {{/each}}
+</ul>
+
+<form action="/api/carts/{{cart._id}}?_method=DELETE" method="POST">
+  <!-- Formulario para vaciar todo el carrito -->
+  <button type="submit">Vaciar carrito</button>
+</form>
