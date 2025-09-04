@@ -43,7 +43,6 @@ Este proyecto es un servidor backend desarrollado con Node.js, Express y MongoDB
 │   ├── index.handlebars            # Vista principal con productos y carrito
 │   ├── productDetail.handlebars    # Vista de detalle de producto
 │   ├── cartDetail.handlebars       # Vista de carrito específico
-│   ├── realTimeProducts.handlebars # Vista con productos en tiempo real (Socket.io)
 │   └── layouts/
 │       └── main.handlebars         # Layout principal para Handlebars
 ├── public/
@@ -92,9 +91,6 @@ Este proyecto es un servidor backend desarrollado con Node.js, Express y MongoDB
 
 - `/carts/:cid`  
   Vista de carrito específico, mostrando solo los productos de ese carrito.
-
-- `/realtimeproducts`  
-  Vista de productos en tiempo real (Socket.io).
 
 ---
 
