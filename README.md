@@ -12,7 +12,7 @@ Este proyecto es un servidor backend desarrollado con Node.js, Express y MongoDB
 - 🚀 **Servidor Express robusto:** Endpoints claros y organizados bajo rutas `/api/products` y `/api/carts`.
 - 🖥️ **Vistas con Handlebars:** Interfaz visual para ver productos, detalle de producto y carrito, con paginación y filtros.
 - 🎨 **Frontend elegante y dinámico:** Operaciones intuitivas, recuadros atractivos, botones modernos y actualización sin recargar la página.
-- 🔄 **Actualización en tiempo real (opcional):** Vista `/realtimeproducts` con Socket.io para productos en tiempo real.
+- 🔄 **Actualización en tiempo real** 
 
 ---
 
